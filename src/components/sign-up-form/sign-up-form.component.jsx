@@ -56,12 +56,12 @@ const SignUpForm = () => {
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-        label='Display Name'
-        type='text'
-        required
-        onChange={handleChange}
-        name='displayName'
-        value={displayName}
+          label='Display Name'
+          type='text'
+          required
+          onChange={handleChange}
+          name='displayName'
+          value={displayName}
         />
         <FormInput 
           label='Email'
