@@ -31,6 +31,7 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
+    setCurrentUser(user);
   }
 
   const handleSignIn = async (e) => {
@@ -42,8 +43,8 @@ const SignInForm = () => {
     }
 
     try {
-      const response = await signInAuthWithEmailAndPassword(email, password);
-      setCurrentUser(response);
+      const user = await signInAuthWithEmailAndPassword(email, password);
+      setCurrentUser(user);
       resetFormFields();
     } catch(error) {
       switch(error.code) {
