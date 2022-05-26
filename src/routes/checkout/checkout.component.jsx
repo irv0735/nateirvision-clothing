@@ -15,6 +15,9 @@ const Checkout = () => {
       {cartItems.map((cartItem) => 
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       )}
+      <div className='total'>
+        ${cartItems.reduce((total, cartItem) => total + cartItem.quantity*cartItem.price, 0)}
+      </div>
     </div>
   )
 }
