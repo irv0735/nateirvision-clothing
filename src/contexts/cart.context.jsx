@@ -1,18 +1,15 @@
 import { createContext, useEffect, useState } from 'react';
 
-
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
-
   if(existingCartItem) {
     return cartItems.map((cartItem) => cartItem.id === productToAdd.id 
     ? {...cartItem, quantity: cartItem.quantity + 1 }
     : cartItem
     );
   }
-
   return [...cartItems, {...productToAdd, quantity: 1}];
 };
 
@@ -21,15 +18,7 @@ const removeCartItem = (cartItems, productToRemove) => {
   return updatedCart.filter((e) => e !== productToRemove)
 };
 
-const increaseCount = (cartItems, productToIncrease) => {
-  return cartItems.map((cartItem) => cartItem.id === productToIncrease.id 
-  ? {...cartItem, quantity: cartItem.quantity + 1 }
-  : cartItem
-  );
-};
-
 const decreaseCount = (cartItems, productToDecrease) => {
-
   if (productToDecrease.quantity === 1) {
     const newCart = removeCartItem(cartItems, productToDecrease)
     return newCart
@@ -69,15 +58,11 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCartItem(cartItems, productToRemove));
   }
 
-  const increaseItemCount = (productToIncrease) => {
-    setCartItems(increaseCount(cartItems, productToIncrease));
-  }
-
   const decreaseItemCount = (productToDecrease) => {
     setCartItems(decreaseCount(cartItems, productToDecrease));
   }
 
-  const value = { isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, decreaseItemCount, increaseItemCount, cartItems, cartCount };
+  const value = { isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, decreaseItemCount, cartItems, cartCount };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
