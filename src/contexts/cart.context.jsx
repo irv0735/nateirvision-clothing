@@ -14,8 +14,7 @@ const addCartItem = (cartItems, productToAdd) => {
 };
 
 const removeCartItem = (cartItems, productToRemove) => {
-  let updatedCart = [...cartItems];
-  return updatedCart.filter((e) => e !== productToRemove)
+  return cartItems.filter((cartItem) => cartItem !== productToRemove)
 };
 
 const decreaseCount = (cartItems, productToDecrease) => {
@@ -35,7 +34,8 @@ export const CartContext = createContext({
   setIsCartOpen: () => {},
   cartItems: [], 
   addItemToCart: () => {},
-  removeItemFromCart: () => {}, 
+  removeItemFromCart: () => {},
+  decreaseItemCount: () => {}, 
   cartCount: 0
 });
 
