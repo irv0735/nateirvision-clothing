@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { SpinnerContainer } from '../spinner/spinner.styles';
+
 export const BaseButton = styled.button`
   min-width: 165px;
   width: auto;
@@ -18,6 +20,7 @@ export const BaseButton = styled.button`
   display: flex;
   justify-content: center;
   white-space: nowrap;
+  align-items: center;
 `
 export const GoogleSignInButton = styled(BaseButton)`
   background-color: #4285f4;
@@ -38,5 +41,9 @@ export const InvertedButton = styled(BaseButton)`
     color: white;
     border: none;
   }
+`
+export const ButtonSpinner = styled(SpinnerContainer)`
+  width: 30px;
+  height: 30px;
 `
 
